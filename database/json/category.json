@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Ice Cream",
+        "slug": "ice-cream",
+        "image": "ice-cream.jpg",
+        "description": "Ice Cream Category",
+        "status": 1
+        },
+        {
+        "name": "Fruits",
+        "slug": "fruits",
+        "image": "fruits.jpg",
+        "description": "Fruits Category",
+        "status": 1
+        }
+]
