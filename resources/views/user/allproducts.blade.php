@@ -10,7 +10,7 @@
             
             <div class="row g-4" id="mgrid">
                <!-- CARD 1: Burgers -->
-                      @foreach($products as $product)
+                      @foreach($category->products as $product)
                <div class="col-sm-6 col-lg-4 mwrap aos-init aos-animate" data-c="burgers" data-aos="fade-up" style="opacity: 1; transform: translateY(0px); transition: opacity 0.38s, transform 0.38s;">
                   <div class="mcard" data-img="img/menu/1.jpg" data-title="Classic Smash Burger" data-cat="Burgers" data-price="$14.99" data-old="$18.99" data-rating="4.9" data-reviews="128" data-cal="620" data-time="12" data-desc="Double smashed patty, cheddar cheese, caramelized onions, house pickles and our legendary special sauce. Made fresh to order on a toasted brioche bun." data-tags="Spicy,Bestseller,Beef">
                      <div class="mimg">
@@ -42,7 +42,7 @@
       </section>
 
 
-      @foreach($products as $product)
+     @foreach($category->products as $product)
 
 <div class="modal fade" id="modal-default{{ $product->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">

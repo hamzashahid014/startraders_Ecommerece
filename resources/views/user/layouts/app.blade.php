@@ -10,6 +10,7 @@
           @yield('categories_section')
 
           @yield('products_section')
+              @yield('home_products')
         <!-- ABOUT US -->
          @yield('content_aboutus')
         <!-- Contact -->

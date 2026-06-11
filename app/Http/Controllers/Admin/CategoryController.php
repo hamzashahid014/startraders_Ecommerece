@@ -13,7 +13,16 @@ class CategoryController extends Controller
 
 public function show(Category $category)
 {
-    return view('admin.category_details', compact('category'));
+     if(Auth::check() && Auth::user()->role=='admin')
+            {
+       return view('admin.category_details', compact('category'));
+        }
+        else
+            
+            {
+                 return view('user.allproducts', compact('category'));
+        }
+   
 }
     public function allCategories()
     {
