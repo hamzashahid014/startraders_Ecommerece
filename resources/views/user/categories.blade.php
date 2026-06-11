@@ -19,7 +19,7 @@
                         <div class="chexp">{{$category->products->count()}}</div>
                      </div>
                   </div>
-                  <div class="text-center mt-5"><a href="{{route('user.allproducts')}}" class="btn-red"><i class="fas fa-th-large"></i>View Products</a></div>
+                  <div class="text-center mt-5"><a href="{{route('user.categoryProducts',$category)}}" class="btn-red"><i class="fas fa-th-large"></i>View Products</a></div>
                </div>
                 @endforeach
             </div>

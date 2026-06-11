@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\middleware\ValidUser;
 Route::get('/home', [UserController::class, 'homePage'])->name('user.homePage');
 Route::get('/usercategories', [CategoryController::class, 'allCategories'])->name('user.categories');
+Route::get('/categoryProducts/{category}', [CategoryController::class, 'show'])->name('user.categoryProducts');
+
 Route::get('/userproducts', [ProductController::class, 'allProducts'])->name('user.allproducts');
 
 Route::get('/about', [UserController::class, 'about'])->name('user.about');
