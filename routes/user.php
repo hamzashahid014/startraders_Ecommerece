@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CartController;
 use App\Http\middleware\ValidUser;
 Route::get('/home', [UserController::class, 'homePage'])->name('user.homePage');
 Route::get('/usercategories', [CategoryController::class, 'allCategories'])->name('user.categories');
@@ -21,4 +22,13 @@ Route::get('/userlogout', [UserController::class, 'userLogout'])->name('user.log
 
 Route::post('/registerUser', [UserController::class, 'registerUser'])->name('user.registerUser');
 Route::post('/checklogin', [UserController::class, 'checkLogin'])->name('user.checkLogin');
+Route::get('/cartIncrease/{id}', [CartController::class, 'cartIncrease'])->name('cart.increase');
+Route::get('/cartDecrease/{id}', [CartController::class, 'cartDecrease'])->name('cart.decrease');
+Route::get('/cartRemove/{id}', [CartController::class, 'removeCartItem'])->name('cart.remove');
 
+Route::post('/AddtoCart', [CartController::class, 'addItemToCart'])->name('user.addtocart');
+Route::get('/clear-cart', function () {
+    session()->forget('cart');
+
+    return 'Cart cleared';
+});

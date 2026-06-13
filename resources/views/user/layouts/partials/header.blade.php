@@ -1,3 +1,7 @@
+@php
+    $cart = session()->get('cart', []);
+    $cartCount = count($cart);
+@endphp
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -76,9 +80,23 @@
                </ul>
 
                <div class="d-flex align-items-center gap-1">
+                 <button class="btn btn-light"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#cartSidebar">
+            <div class="position-relative d-inline-block">
+
+    <i class="fas fa-shopping-cart fa-lg"></i>
+
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ $cartCount }}
+    </span>
+
+</div>
+
+    </button>
                   <!-- FIX 1: Search button -->
-                  <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
-                  <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>Order Now</a>
+                  <!-- <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
+                  <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>View Cart</a> -->
                </div>
                  <div class="d-flex align-items-center gap-1">
                   <!-- FIX 1: Search button -->
@@ -422,7 +440,94 @@
     </div>
 </div>
 
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="cartSidebar">
+
+    <div class="offcanvas-header">
+
+        <h5>Your Cart</h5>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+    <div class="offcanvas-body">
+
+        @if(count($cart))
+        @php 
+$cartTotal=0;
+@endphp
+
+            @foreach($cart as $item)
+@php 
+$itemtotal=$item['price'] * $item['quantity'];
+$cartTotal+=$itemtotal;
+@endphp
+                <div class="d-flex align-items-center mb-3">
+
+                    <img src="{{ asset('storage/'.$item['image']) }}"
+                         width="60">
+
+                    <div class="ms-3">
+
+                        <h6>{{ $item['name'] }}</h6>
+
+                        
+                        <a href="{{ route('cart.decrease', $item['id']) }}"
+       class="btn btn-warning btn-sm">
+       -
+    </a>
+
+    <span>{{ $item['quantity'] }}</span>
+
+    <a href="{{ route('cart.increase', $item['id']) }}"
+       class="btn btn-success btn-sm">
+       +
+    </a>
+
+    <a href="{{ route('cart.remove', $item['id']) }}"
+       class="btn btn-danger btn-sm">
+    <i class="far fa-trash-alt"></i>
+    </a>
+
+                        <br>
+
+                        <strong>
+                            Rs {{ $item['price'] }} * {{ $item['quantity'] }}= {{$itemtotal}} 
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <hr>
+                
+            @endforeach
+             <strong>
+                            Cart Amount:Rs {{$cartTotal}}
+                        </strong>
+          
+
+
+        @else
+
+            <p>Your cart is empty.</p>
+
+        @endif
+
+       
+
+    </div>
+
+</div>
+
 @if($errors->register->any())
+
+
 
 <script>
 

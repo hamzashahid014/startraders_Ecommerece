@@ -85,7 +85,7 @@
                         </div>
 
                         <p class="food-description">
-                            {{ $product->description }}
+                            {{ $product->description }}  {{ $product->id }}
                         </p>
 
                       <div class="food-meta">
@@ -112,21 +112,30 @@
                         </div>
 
                        <div class="purchase-section">
-
+                        
     <div class="qty-section">
-        <button class="qty-btn">-</button>
+        <button class="qty-btn minus-btn">-</button>
         <span class="qty-number">1</span>
-        <button class="qty-btn">+</button>
+        <button class="qty-btn plus-btn">+</button>
     </div>
 
+    <form action="{{route('user.addtocart')}}" method="POST" >
+     @csrf
     <button class="cart-btn">
         <i class="fas fa-shopping-cart me-2"></i>
         Add To Cart
     </button>
 
+    <input type="hidden" name="product_qty" id='product_qty'value='1'>
+    <input type="hidden" name='product_id' id='product_id' value=' {{ $product->id }}'>
+       </form>
+    
+
 </div>
 
+
                     </div>
+                 
 
                 </div>
 
@@ -135,6 +144,38 @@
         </div>
     </div>
 </div>
+  
 
 @endforeach
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.plus-btn').forEach(button => {
+        button.addEventListener('click', function () {
+
+            let qtyNumber = this.parentElement.querySelector('.qty-number');
+            let qty = parseInt(qtyNumber.innerText);
+            qtyNumber.innerText = qty + 1;
+            let productQty=document.getElementById('product_qty').value = qty+1;
+                  document.getElementById('showqty').innerText =productQty;
+        });
+    });
+
+    document.querySelectorAll('.minus-btn').forEach(button => {
+        button.addEventListener('click', function () {
+
+            let qtyNumber = this.parentElement.querySelector('.qty-number');
+            let qty = parseInt(qtyNumber.innerText);
+
+            if (qty > 1) {
+                qtyNumber.innerText = qty - 1;
+               let productQty=document.getElementById('product_qty').value = qty-1;
+                document.getElementById('showqty').innerText =productQty;
+            }
+        });
+    });
+
+});
+</script>
    @endsection
