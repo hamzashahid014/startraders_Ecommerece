@@ -81,5 +81,6 @@
       <script src="{{ asset('user/js/jquery.magnific-popup.min.js') }}"></script>
       <!-- Main js -->
       <script src="{{ asset('user/js/main.js') }}"></script>
+        <script src="{{ asset('user/js/cart.js') }}"></script>
    </body>
 </html>

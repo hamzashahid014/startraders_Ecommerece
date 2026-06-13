@@ -24,6 +24,7 @@
       <link rel="stylesheet" href="{{ asset('user/css/magnific-popup.css') }}"/>
       <!-- Style CSS -->
       <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" />
+       <script src="{{ asset('user/js/cart.js') }}"></script>
    </head>
    <body>
       <!-- ============================================================
