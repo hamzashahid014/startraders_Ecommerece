@@ -38,7 +38,7 @@ class CartController extends Controller
             }
             session()->put('cart',$cart);
             
-    return back()->with('success','Product added to cart');
+    return back()->with('addToCart_success','Product added to cart');
     }
 
     public function cartIncrease($id)

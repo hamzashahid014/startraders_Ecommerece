@@ -58,6 +58,10 @@ class UserController extends Controller
     public function userLogout()
     {
         Auth::logout();
+
+    return redirect('/')
+            ->with('success', 'Logged out successfully');
+
     }
 
     public function registerUser(Request $request)

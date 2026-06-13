@@ -165,6 +165,13 @@
             </div>
          </div>
       </div>
+      @if(session('addToCart_success'))
+
+<div class="alert alert-success">
+    {{ session('addToCart_success') }}
+</div>
+
+@endif
 
 <!-- loginModel -->
       <div class="modal fade" id="loginModal" tabindex="-1">
@@ -604,3 +611,20 @@ setTimeout(function() {
 }, 3000);
 
 </script>
+
+
+@if(session('addToCart_success'))
+<!-- 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    var loginModal = new bootstrap.Modal(
+        document.getElementById('loginModal')
+    );
+
+    loginModal.show();
+
+});
+</script> -->
+
+@endif
