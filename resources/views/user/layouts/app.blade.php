@@ -15,5 +15,7 @@
          @yield('content_aboutus')
         <!-- Contact -->
          @yield('contactUs')
+         
+         @yield('checkout_content')
       <!-- FOOTER -->
      @include('user.layouts.partials.footer')   

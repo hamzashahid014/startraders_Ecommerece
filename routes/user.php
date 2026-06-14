@@ -25,8 +25,11 @@ Route::post('/checklogin', [UserController::class, 'checkLogin'])->name('user.ch
 Route::get('/cartIncrease/{id}', [CartController::class, 'cartIncrease'])->name('cart.increase');
 Route::get('/cartDecrease/{id}', [CartController::class, 'cartDecrease'])->name('cart.decrease');
 Route::get('/cartRemove/{id}', [CartController::class, 'removeCartItem'])->name('cart.remove');
-
+Route::get('/checkout', [CartController::class, 'checkout'])->name('user.checkout')->middleware('IsValidUser');
+Route::post('/place-order', [CartController::class, 'placeOrder'])->middleware('IsValidUser')->name('place.order');
 Route::post('/AddtoCart', [CartController::class, 'addItemToCart'])->name('user.addtocart');
+
+
 Route::get('/clear-cart', function () {
     session()->forget('cart');
 

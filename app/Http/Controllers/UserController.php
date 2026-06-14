@@ -40,8 +40,15 @@ class UserController extends Controller
     }
 
     if (Auth::attempt($validator->validated())) {
-
+        if($request->filled('redirect_to'))
+{
+    return redirect($request->redirect_to);
+}
+else
+    {
         return redirect()->route('user.dashboard');
+    }
+        
     }
     return back()->withErrors(['login' => 'Invalid Email or Password'], 'login')->withInput();
         // echo print_r($request->all());
@@ -55,9 +62,11 @@ class UserController extends Controller
        
     }
 
-    public function userLogout()
+    public function userLogout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
     return redirect('/')
             ->with('success', 'Logged out successfully');

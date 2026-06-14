@@ -96,9 +96,7 @@
 
     </button>
                   <!-- FIX 1: Search button -->
-                  <!-- <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
-                  <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>View Cart</a> -->
-               </div>
+                    </div>
                  <div class="d-flex align-items-center gap-1">
                   <!-- FIX 1: Search button -->
                    @if(Auth::check())
@@ -290,7 +288,7 @@
                                     </div>
 
                                 </div>
-
+                                <input type="hidden" name="redirect_to"value="{{ route('user.checkout') }}">
                             </form>
 
                         </div>
@@ -518,6 +516,26 @@ $cartTotal+=$itemtotal;
              <strong>
                             Cart Amount:Rs {{$cartTotal}}
                         </strong>
+                        <div class="cart-footer">
+
+    @auth
+        <a href="{{ route('user.checkout') }}"
+           class="btn btn-success w-100">
+            Proceed To Checkout
+        </a>
+    @endauth
+
+    @guest
+        <button
+            type="button"
+            class="btn btn-success w-100"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal">
+            Proceed To Checkout
+        </button>
+    @endguest
+
+</div>
           
 
 
