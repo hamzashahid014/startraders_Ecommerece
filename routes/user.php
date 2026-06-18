@@ -17,6 +17,10 @@ Route::get('/contact', [UserController::class, 'contact'])->name('user.contact')
 
 Route::get('/userdashboard', [UserController::class, 'dashboard'])
 ->name('user.dashboard')->middleware('IsValidUser');
+Route::get('/my-orders', [UserController::class, 'myOrders'])
+->name('user.orders')->middleware('IsValidUser');
+Route::get('/order-details/{order}', [UserController::class, 'orderDetails'])
+->name('user.orderDetails')->middleware('IsValidUser');
 
 Route::get('/userlogout', [UserController::class, 'userLogout'])->name('user.logout');
 

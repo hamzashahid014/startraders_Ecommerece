@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -40,12 +41,15 @@ class UserController extends Controller
     }
 
     if (Auth::attempt($validator->validated())) {
+        //this filled is hidden and is used to navigate to chkoutpage
         if($request->filled('redirect_to'))
 {
+    
     return redirect($request->redirect_to);
 }
 else
     {
+
         return redirect()->route('user.dashboard');
     }
         
@@ -55,10 +59,23 @@ else
       
     }
 
+    public function myOrders()
+    {
+        $orders=Auth::user()->orders()->latest()->get();
+          return view('user.myOrders',compact('orders'));
+    }
+     public function orderDetails(Order $order)
+    {
+        if($order->user_id!=Auth::id())
+            {
+                abort(403);
+            }
+            return view('user.orderDetails',compact('order'));
+    }
       public function dashboard()
     {
 
-     return view('user.dashboard');
+        return view('user.dashboard');
        
     }
 
@@ -66,10 +83,9 @@ else
     {
         Auth::logout();
         $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        //$request->session()->regenerateToken();
 
-    return redirect('/')
-            ->with('success', 'Logged out successfully');
+    return redirect('/')->with('success', 'Logged out successfully');
 
     }
 
@@ -93,4 +109,6 @@ else
 
         return redirect('/')->with('success', 'Registration successful. Please log in.');
     }
+
+
 }

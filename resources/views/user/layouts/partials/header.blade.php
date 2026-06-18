@@ -105,11 +105,11 @@
                   <a href="#menu" class="nav-link nav-cta" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-shopping-bag me-1"></i>Log In</a>
                   @endif
                </div>
-                     @if(Auth::check())
+                     @if(Auth::check() && Auth::user()->role=='user')
                <div class="d-flex align-items-center gap-1">
                   <!-- FIX 1: Search button -->
              
-                  <a href="#" class="nav-link nav-cta" ><i class="fas fa-shopping-bag me-1"></i>{{Auth::user()->name}}</a>
+                  <a href="{{route('user.dashboard')}}" class="nav-link nav-cta" ><i class="fas fa-shopping-bag me-1"></i>{{Auth::user()->name}}</a>
                </div>
                @endif
 
@@ -288,7 +288,7 @@
                                     </div>
 
                                 </div>
-                                <input type="hidden" name="redirect_to"value="{{ route('user.checkout') }}">
+                                <input type="hidden" name="redirect_to" id="redirect_to">
                             </form>
 
                         </div>
@@ -529,6 +529,7 @@ $cartTotal+=$itemtotal;
         <button
             type="button"
             class="btn btn-success w-100"
+            onclick="checkoutLogin()"
             data-bs-toggle="modal"
             data-bs-target="#loginModal">
             Proceed To Checkout
@@ -631,6 +632,12 @@ setTimeout(function() {
 </script>
 
 
+<script>
+function checkoutLogin()
+{
+    document.getElementById('redirect_to').value ="{{ route('user.checkout') }}";
+}
+</script>
 @if(session('addToCart_success'))
 <!-- 
 <script>

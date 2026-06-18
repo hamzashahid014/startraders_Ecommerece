@@ -61,7 +61,7 @@
                      <td>{{ $loop->iteration }}</td>
                   <td><a href="{{ route('admin.viewCategory', $category) }}">{{ $category->name }}</a></td>
                              <td>{{ $category->description }}</td>
-                              <td><img src="{{  asset('storage/'.$category->image) }}"></td>
+                              <td><img style='width:200px ' src="{{  asset('storage/'.$category->image) }}"></td>
                             
                             <td><a class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default{{ $category->id }}" title="Edit client">
                               <i class="fas fa-pencil-alt">

@@ -1,7 +1,9 @@
 @extends('user.layouts.app')
-
 @section('dashboard_content')
+@php
+$userOrders=Auth::user()->orders()->latest()->get();
 
+@endphp
 <div class="container py-5">
 
     <div class="row">
@@ -19,7 +21,7 @@
                     Dashboard
                 </a>
 
-                <a href="#" class="dash-link">
+                <a href="{{route('user.orders')}}" class="dash-link">
                     My Orders
                 </a>
 
@@ -67,7 +69,7 @@
 
                 <div class="col-md-3 mb-3">
                     <div class="dash-card">
-                        <h3>0</h3>
+                        <h3>{{ Auth::user()->orders()->count() }}</h3>
                         <span>Total Orders</span>
                     </div>
                 </div>
@@ -102,24 +104,18 @@
                 <h4 class="mb-4">
                     Recent Orders
                 </h4>
-
+                @forelse($userOrders as $order)
                 <div class="order-item">
                     <div>
-                        <h6>#1001</h6>
+                        <h6>#{{$order->id}}</h6>
                         <small>Delivered</small>
                     </div>
 
                     <strong>Rs. 2500</strong>
                 </div>
-
-                <div class="order-item">
-                    <div>
-                        <h6>#1002</h6>
-                        <small>Preparing</small>
-                    </div>
-
-                    <strong>Rs. 1800</strong>
-                </div>
+                @empty
+                 <strong>Order Not Found</strong>
+                @endforelse
 
             </div>
 

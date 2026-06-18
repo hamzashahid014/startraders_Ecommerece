@@ -22,6 +22,12 @@
       <img class="nav-menu__image" src="" alt="Hassan Traders" />
     </div>
     <div class="card-body">
+
+         @if(session('msg'))
+    <div class="alert alert-success" id="success-alert">
+        {{ session('msg') }}
+    </div>
+@endif
       <p class="login-box-msg">Sign in to start your session</p>
       
       <form action="{{route('admin.checkLogin')}}" method="post">

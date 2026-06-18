@@ -66,7 +66,7 @@
                      <td>{{$loop->iteration }}</td>
                   <td><a href="{{ route('admin.viewProduct', $product) }}">{{ $product->name }}</a></td>
                              <td>{{ $product->description }}</td>
-                              <td><img src="{{  asset('storage/'.$product->image) }}"></td>
+                              <td><img style="height:200px" src="{{  asset('storage/'.$product->image) }}"></td>
                             
                             <td><a class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default{{ $product->id }}" title="Edit client">
                               <i class="fas fa-pencil-alt">

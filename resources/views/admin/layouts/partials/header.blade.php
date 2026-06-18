@@ -95,18 +95,8 @@
               </a>
             </li>
 
-            <li class="nav-item d-none d-md-block">
-              <a href="#" class="nav-link">
-                <i class="bi bi-grid-1x2 me-1" aria-hidden="true"></i>
-                Live preview
-              </a>
-            </li>
-            <li class="nav-item d-none d-md-block">
-              <a href="#" class="nav-link">
-                <i class="bi bi-book me-1" aria-hidden="true"></i>
-                Documentation
-              </a>
-            </li>
+          
+            
           </ul>
           <!--end::Start Navbar Links-->
 
@@ -311,23 +301,23 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="{{ asset('admin/dist/img/user2-160x160.jpg') }}"
+                  src="{{ asset('admin/dist/assets/img/user2-160x160.jpg') }}"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="{{ asset('admin/dist/img/user2-160x160.jpg') }}"
+                    src="{{ asset('admin/dist/assets/img/user2-160x160.jpg') }}"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2023</small>
+                   {{Auth::user()->name}}
+                    <small>{{ucfirst(Auth::user()->role)}} since {{Auth::user()->created_at}}</small>
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -351,7 +341,7 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-outline-secondary">Profile</a>
-                  <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                  <a href="{{route('admin.logout')}}" class="btn btn-outline-danger float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
               </ul>

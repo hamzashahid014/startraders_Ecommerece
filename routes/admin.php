@@ -9,7 +9,7 @@ use App\Http\middleware\AdminMiddleware;
 
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware(AdminMiddleware::class);
 
-Route::get('/categories', [CategoryController::class, 'allCategories'])->name('admin.categories')->middleware(AdminMiddleware::class);
+Route::get('/admincategories', [CategoryController::class, 'allCategories'])->name('admin.categories')->middleware(AdminMiddleware::class);
 Route::post('/backofficeLogin', [AdminController::class, 'chkeckAdminLogin'])->name('admin.checkLogin');
 Route::get('/backofficeLogin', [AdminController::class, 'loginform'])->name('admin.loginform');
 Route::get('/backffieLogout', [AdminController::class, 'adminLogout'])->name('admin.logout');
@@ -35,3 +35,13 @@ Route::get('/viewProduct/{product}', [ProductController::class, 'showProduct'])-
 
 Route::get('/deleteProduct/{product}',[ProductController::class, 'deleteProduct'])->name('admin.deleteProduct')->middleware(AdminMiddleware::class);
 
+
+Route::get('/all-orders',[AdminController::class, 'allOrders'])->name('admin.allOrders')->middleware(AdminMiddleware::class);
+Route::get('/approved-orders',[AdminController::class, 'approvedOrders'])->name('admin.approvedOrders')->middleware(AdminMiddleware::class);
+Route::get('/pending-orders',[AdminController::class, 'pendingOrders'])->name('admin.pendingOrders')->middleware(AdminMiddleware::class);
+
+Route::get('/accept-order/{order}',[AdminController::class, 'acceptOrder'])
+->name('admin.acceptOrder')->middleware(AdminMiddleware::class);
+
+Route::get('/order-Details/{order}', [AdminController::class, 'orderdetails'])
+->name('admin.orderdetails')->middleware(AdminMiddleware::class);

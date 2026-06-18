@@ -19,9 +19,10 @@ class CartController extends Controller
     {
 
     
-        $product=Product::findOrFail($request->product_id);
+        $product = Product::findOrFail($request->product_id);
     
-        $cart= session()->get('cart',[]);
+        $cart = session()->get('cart',[]);
+       
         if(isset($cart[$product->id]))
             {
                 //print_r($request->product_qty);

@@ -18,13 +18,15 @@ class Order extends Model
     'total_amount',
     'status'
     ];
-    public function items()
+
+    public function orderItems()
     {
-        $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class);
     }
+
     public function user()
     {
-        $this->belongsTo(User::class);
+       return $this->belongsTo(User::class);
     }
     //
 }

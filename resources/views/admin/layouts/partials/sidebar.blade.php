@@ -6,13 +6,13 @@
           <a href="#" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="{{ asset('admin/dist/img/AdminLTELogo.png') }}"
+              src="{{ asset('admin/dist/assets/img/AdminLTELogo.png') }}"
               alt="Logo"
               class="brand-image opacity-75 shadow"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">{{Auth::user()->name}}</span>
+            <a href="{{route('admin.dashboard')}}"><span class="brand-text fw-light">{{Auth::user()->name}}</span></a>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
@@ -83,6 +83,65 @@
                     <a href="./widgets/info-box.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Add New Product</p>
+                    </a>
+                  </li>
+                  
+             
+
+         </ul>
+
+
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-box-seam-fill"></i>
+                  <p>
+                    Orders
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+
+                  <li class="nav-item">
+                    <a href="{{route('admin.allOrders')}}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>All Orders</p>
+                    </a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a href="{{route('admin.pendingOrders')}}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Pending Orders</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{route('admin.approvedOrders')}}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Approved Orders</p>
+                    </a>
+                  </li>
+                  
+             
+
+         </ul>
+
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-box-seam-fill"></i>
+                  <p>
+                    Customers
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+
+                  <li class="nav-item">
+                    <a href="{{route('admin.products')}}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>All Customers</p>
                     </a>
                   </li>
                   

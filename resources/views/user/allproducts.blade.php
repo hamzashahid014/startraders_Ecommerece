@@ -126,7 +126,7 @@
         Add To Cart
     </button>
 
-    <input type="hidden" name="product_qty" id='product_qty'value='1'>
+    <input type="hidden" name="product_qty" class='product_qty'value='1'>
     <input type="hidden" name='product_id' id='product_id' value=' {{ $product->id }}'>
        </form>
     
@@ -149,33 +149,36 @@
 @endforeach
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-
     document.querySelectorAll('.plus-btn').forEach(button => {
-        button.addEventListener('click', function () {
+    button.addEventListener('click', function () {
 
-            let qtyNumber = this.parentElement.querySelector('.qty-number');
-            let qty = parseInt(qtyNumber.innerText);
-            qtyNumber.innerText = qty + 1;
-            let productQty=document.getElementById('product_qty').value = qty+1;
-                  document.getElementById('showqty').innerText =productQty;
-        });
+        let qtyNumber = this.parentElement.querySelector('.qty-number');
+        let qty = parseInt(qtyNumber.innerText) + 1;
+
+        qtyNumber.innerText = qty;
+
+        this.closest('.purchase-section')
+            .querySelector('.product_qty')
+            .value = qty;
     });
+});
 
-    document.querySelectorAll('.minus-btn').forEach(button => {
-        button.addEventListener('click', function () {
+document.querySelectorAll('.minus-btn').forEach(button => {
+    button.addEventListener('click', function () {
 
-            let qtyNumber = this.parentElement.querySelector('.qty-number');
-            let qty = parseInt(qtyNumber.innerText);
+        let qtyNumber = this.parentElement.querySelector('.qty-number');
+        let qty = parseInt(qtyNumber.innerText);
 
-            if (qty > 1) {
-                qtyNumber.innerText = qty - 1;
-               let productQty=document.getElementById('product_qty').value = qty-1;
-                document.getElementById('showqty').innerText =productQty;
-            }
-        });
+        if (qty > 1) {
+            qty--;
+
+            qtyNumber.innerText = qty;
+
+            this.closest('.purchase-section')
+                .querySelector('.product_qty')
+                .value = qty;
+        }
     });
-
 });
 </script>
    @endsection
