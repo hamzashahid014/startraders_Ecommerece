@@ -19,7 +19,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <img class="nav-menu__image" src="" alt="Hassan Traders" />
+      <img class="nav-menu__image" src="{{ asset('admin/dist/assets/img/AdminLTELogo.png')}}" alt="Hassan Traders" />
     </div>
     <div class="card-body">
 

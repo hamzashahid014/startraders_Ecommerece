@@ -99,7 +99,7 @@
                     </div>
                  <div class="d-flex align-items-center gap-1">
                   <!-- FIX 1: Search button -->
-                   @if(Auth::check())
+                   @if(Auth::check() && Auth::user()->role=='user')
                   <a href="{{route('user.logout')}}" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>Log Out</a>
                 @else
                   <a href="#menu" class="nav-link nav-cta" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-shopping-bag me-1"></i>Log In</a>

@@ -121,7 +121,7 @@ foreach($cart as $item)
         'address'=>$request->address,
         'notes'=>$request->notes,
         'payment_method'=>$request->payment_method,
-        'payment_status'=>'pending',
+        'payment_status'=>'unpaid',
         'total_amount'=>$cartTotal,
         'status'=>'pending',
     ]);

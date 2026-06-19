@@ -18,7 +18,7 @@ class ValidUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check())
+        if(Auth::check() && Auth::user()->role=='user')
             {
       return $next($request);
             }

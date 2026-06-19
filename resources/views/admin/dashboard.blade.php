@@ -1,6 +1,8 @@
 @extends('admin.layouts.master')
-
 @section('dashboard_section')
+@php
+$revenue=0;
+@endphp
         <!--begin::App Main-->
       <main class="app-main">
         <!--begin::App Content Header-->
@@ -64,9 +66,12 @@
                 <!--begin::Small Box Widget 2-->
                 <div class="small-box text-bg-success">
                   <div class="inner">
-                    <h3>{{$orders->where('status', 'approved')->count()}}<sup class="fs-5">%</sup></h3>
-
-                    <p>Approved Orders</p>
+                         @php
+                         $revenue = $orders->where('status', 'approved')->sum('total_amount');
+                     @endphp
+                    <h3>{{$orders->where('status', 'approved')->count()}}<sup class="fs-5"></sup></h3>
+                    
+                    <p>Approved Orders(Rs {{$revenue}})</p>
                   </div>
                   <svg
                     class="small-box-icon"

@@ -53,7 +53,7 @@ class AdminController extends Controller
     }
          public function pendingOrders()
     {
-         $orders = Order::where('status', 'approved')->latest()->get();
+         $orders = Order::where('status', 'pending')->latest()->get();
         return view('admin.pendingOrders',compact('orders'));
     }
     public function loginform()
