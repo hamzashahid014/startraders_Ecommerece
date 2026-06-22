@@ -140,8 +140,15 @@ foreach($cart as $item)
         'subtotal' => $item['price'] * $item['quantity']
     ]);
 }
-session()->forget('cart');
+if($request->payment_method=='cod')
+    {
+        session()->forget('cart');
  return redirect()->route('user.checkout')->with('success', 'Product Added Successfuly');
+    }
+    if($request->payment_method == 'stripe')
+{
+    return redirect()->route('stripe.payment',$order);
+}
 
 }
 }

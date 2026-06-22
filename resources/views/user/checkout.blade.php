@@ -111,7 +111,7 @@
                                     Cash On Delivery
                                 </option>
 
-                                <option value="online">
+                                <option value="stripe">
                                     Online Payment
                                 </option>
 

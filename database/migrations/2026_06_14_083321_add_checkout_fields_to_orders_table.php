@@ -29,7 +29,7 @@ return new class extends Migration
               ->nullable()
               ->after('address');
 
-        $table->enum('payment_method', ['cod', 'online'])
+        $table->enum('payment_method', ['cod', 'stripe'])
               ->default('cod')
               ->after('notes');
 

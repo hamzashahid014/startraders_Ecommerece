@@ -110,5 +110,14 @@ else
         return redirect('/')->with('success', 'Registration successful. Please log in.');
     }
 
+     public function orderSuccess()
+    {
+        dd('thanks for your order');
+
+    //return redirect('/')->with('success', 'Logged out successfully');
+
+    }
+
+
 
 }

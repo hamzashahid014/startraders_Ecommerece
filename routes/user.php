@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\PaymentController;
 use App\Http\middleware\ValidUser;
 Route::get('/home', [UserController::class, 'homePage'])->name('user.homePage');
 Route::get('/usercategories', [CategoryController::class, 'allCategories'])->name('user.categories');
@@ -34,8 +35,16 @@ Route::post('/place-order', [CartController::class, 'placeOrder'])->middleware('
 Route::post('/AddtoCart', [CartController::class, 'addItemToCart'])->name('user.addtocart');
 
 
+Route::get('/stripe-payment/{order}',[PaymentController::class,'stripePayment'])->name('stripe.payment')->middleware('IsValidUser');
+
+Route::get('/stripe-success/{order}',[PaymentController::class,'success'])->name('stripe.success')->middleware('IsValidUser');
+
+Route::get('/stripe-cancel/{order}',[PaymentController::class,'cancel'])->name('stripe.cancel')->middleware('IsValidUser');
+
+Route::get('/order-success',[UserController::class,'orderSuccess'])->name('user.orderSuccess')->middleware('IsValidUser');
+
 Route::get('/clear-cart', function () {
     session()->forget('cart');
-
     return 'Cart cleared';
-});
+    }
+    )->middleware('IsValidUser');

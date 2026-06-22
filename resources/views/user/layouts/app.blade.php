@@ -20,5 +20,7 @@
          
          @yield('user_Orders')
          @yield('orderDetails_section')
+
+            @yield('paymentMethod_section')
       <!-- FOOTER -->
      @include('user.layouts.partials.footer')   
