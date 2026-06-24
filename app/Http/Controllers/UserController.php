@@ -112,7 +112,8 @@ else
 
      public function orderSuccess()
     {
-        dd('thanks for your order');
+        //dd('thanks for your order');
+        return view('user.orderSuccess');
 
     //return redirect('/')->with('success', 'Logged out successfully');
 

@@ -43,6 +43,7 @@ class AdminController extends Controller
        //dd($order);
        $order->update([
         'status' => 'approved',
+        'payment_status'=>'paid',
     ]);
               return redirect()->route('admin.allOrders');
     }

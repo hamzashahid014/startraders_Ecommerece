@@ -5,12 +5,12 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-6">
-                <h3 class="mb-0">Projects</h3>
+                <h3 class="mb-0">Approved Orders</h3>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Projects</li>
+                  <li class="breadcrumb-item active" aria-current="page">Approved Orders</li>
                 </ol>
               </div>
             </div>
@@ -57,7 +57,7 @@
             <!-- Toolbar -->
             <div class="card">
               <div class="card-header d-flex flex-wrap gap-2 align-items-center">
-                <h3 class="card-title mb-0 me-auto">All projects</h3>
+                <h3 class="card-title mb-0 me-auto">All Approved Orders</h3>
                 <div class="input-group input-group-sm" style="width: 16rem">
                   <span class="input-group-text">
                     <i class="bi bi-search" aria-hidden="true"></i>

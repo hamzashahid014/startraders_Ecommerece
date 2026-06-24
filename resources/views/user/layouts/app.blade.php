@@ -19,7 +19,10 @@
          @yield('checkout_content')
          
          @yield('user_Orders')
+         
          @yield('orderDetails_section')
+
+           @yield('orderSuccess_section')
 
             @yield('paymentMethod_section')
       <!-- FOOTER -->
